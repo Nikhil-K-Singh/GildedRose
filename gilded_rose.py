@@ -15,9 +15,12 @@ class GildedRose(object):
                 item.quality -= 1
         item.sell_in -= 1
         
-    def update_aged_brie(self):
-        pass
-    def update_sulfuras(self):
+    def update_aged_brie(self,item):
+        if item.quality < self.q_max:
+            item.quality+=1
+        item.sell_in -= 1
+    
+    def update_sulfuras(self,item):
         pass
 
     def update_backstage(self,item):
@@ -44,7 +47,7 @@ class GildedRose(object):
             item.quality = self.q_min
 
         item.sell_in -= 1
-        
+
     def update_quality(self):
         for item in self.items:
             if item.name == "Aged Brie":
