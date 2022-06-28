@@ -2,8 +2,22 @@
 
 class GildedRose(object):
 
-    def __init__(self, items):
+    def __init__(self, items,q_min=0,q_max=50,q_legendary=80):
         self.items = items
+        self.q_min = q_min
+        self.q_max = q_max
+        self.q_legendary = q_legendary
+
+    def update_standard(self):
+        pass
+    def update_aged_brie(self):
+        pass
+    def update_sulfuras(self):
+        pass
+    def update_backstage(self):
+        pass
+    def update_conjured(self):
+        pass
 
     def update_quality(self):
         for item in self.items:
