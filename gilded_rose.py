@@ -10,13 +10,11 @@ class GildedRose(object):
 
     def update_standard(self,item):
         if item.quality > self.q_min:
-            item.quality = item.quality - 1
-            # if sell in days have passed, decrease quality twice
+            item.quality -= 1
             if item.sell_in <= 0:
-                item.quality = item.quality - 1
-
-        # decrease sell_in days
-        item.sell_in = item.sell_in - 1
+                item.quality -= 1
+        item.sell_in -= 1
+        
     def update_aged_brie(self):
         pass
     def update_sulfuras(self):
@@ -24,24 +22,29 @@ class GildedRose(object):
 
     def update_backstage(self,item):
         if 10 >= item.sell_in > 5:
-            item.quality = item.quality + 2
+            item.quality +=2
         elif 5 >= item.sell_in > 0:
-            item.quality = item.quality + 3
+            item.quality +=3
         elif item.sell_in <= 0:
             item.quality = 0
         else:
-            item.quality = item.quality + 1
+            item.quality +=1
 
         if item.quality > self.q_max:
             item.quality = self.q_max
 
-        item.sell_in = item.sell_in - 1
+        item.sell_in -= 1
     
-    
-    
-    def update_conjured(self):
-        pass
+    def update_conjured(self,item):
+        if item.quality > self.q_min:
+            item.quality-=2
+            if item.sell_in <=0:
+                item.quality-=2
+        if item.quality < self.q_min:
+            item.quality = self.q_min
 
+        item.sell_in -= 1
+        
     def update_quality(self):
         for item in self.items:
             if item.name == "Aged Brie":
