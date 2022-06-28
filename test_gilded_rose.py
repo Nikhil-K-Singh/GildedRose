@@ -79,7 +79,7 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(-5, gilded_rose.items[2].sell_in)
         self.assertEqual(50, gilded_rose.items[2].quality)
 
-    # Legendary item - Sulfuras
+    # Sulfuras
     def test_sulfuras(self):
         items = [
             Item(name="Sulfuras, Hand of Ragnaros", sell_in=0, quality=80),
@@ -94,16 +94,16 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(80, gilded_rose.items[0].quality)
         self.assertEqual(-1, gilded_rose.items[1].sell_in)
         self.assertEqual(80, gilded_rose.items[1].quality)
-        self.assertEqual(2, gilded_rose.items[1].sell_in)
-        self.assertEqual(80, gilded_rose.items[1].quality)
+        self.assertEqual(2, gilded_rose.items[2].sell_in)
+        self.assertEqual(80, gilded_rose.items[2].quality)
 
         gilded_rose.update_quality()  # Day 2
         self.assertEqual(0, gilded_rose.items[0].sell_in)
         self.assertEqual(80, gilded_rose.items[0].quality)
         self.assertEqual(-1, gilded_rose.items[1].sell_in)
         self.assertEqual(80, gilded_rose.items[1].quality)
-        self.assertEqual(2, gilded_rose.items[1].sell_in)
-        self.assertEqual(80, gilded_rose.items[1].quality)
+        self.assertEqual(2, gilded_rose.items[2].sell_in)
+        self.assertEqual(80, gilded_rose.items[2].quality)
 
     # Backstage passes
     def test_backstage_passes(self):

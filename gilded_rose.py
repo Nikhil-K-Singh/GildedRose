@@ -9,51 +9,48 @@ class GildedRose(object):
         self.q_legendary = q_legendary
 
     def update_standard(self,item):
-        if item.quality > self.q_min:
+        if item.quality > self.q_min:   #   The Quality of an item is never negative
             item.quality -= 1
-            if item.sell_in <= 0:
+            if item.sell_in <= 0:   #   Once the sell by date has passed, Quality degrades twice as fast
                 item.quality -= 1
-        item.sell_in -= 1
+        item.sell_in -= 1   # sell_in time decreases regardless
         
     def update_aged_brie(self,item):
-        if item.quality < self.q_max:
+        if item.quality < self.q_max:   # "Aged Brie" actually increases in Quality the older it gets but The Quality of an item is never more than 50
             item.quality+=1
-        item.sell_in -= 1
-    
-    def update_sulfuras(self,item):
-        pass
+        item.sell_in -= 1   # sell_in time decreases regardless
 
     def update_backstage(self,item):
-        if 10 >= item.sell_in > 5:
+        if 10 >= item.sell_in > 5:  #   Quality increases by 2 when there are 10 days or less      
             item.quality +=2
-        elif 5 >= item.sell_in > 0:
+        elif 5 >= item.sell_in > 0: #   and by 3 when there are 5 days or less
             item.quality +=3
-        elif item.sell_in <= 0:
+        elif item.sell_in <= 0: #   Quality drops to 0 after the concert
             item.quality = 0
         else:
             item.quality +=1
 
-        if item.quality > self.q_max:
+        if item.quality > self.q_max:   #   The Quality of an item is never more than 50
             item.quality = self.q_max
 
-        item.sell_in -= 1
+        item.sell_in -= 1   # sell_in decreases regardless
     
     def update_conjured(self,item):
-        if item.quality > self.q_min:
-            item.quality-=2
-            if item.sell_in <=0:
-                item.quality-=2
-        if item.quality < self.q_min:
+        if item.quality > self.q_min:   #   "Conjured" items degrade in Quality twice as fast as normal items
+            item.quality-=2 
+            if item.sell_in <=0:    #   Once the sell by date has passed, Quality degrades twice as fast
+                item.quality-=2 
+        if item.quality < self.q_min:   #   The Quality of an item is never negative
             item.quality = self.q_min
 
-        item.sell_in -= 1
+        item.sell_in -= 1   # sell_in decreases regardless
 
-    def update_quality(self):
+    def update_quality(self):   
         for item in self.items:
             if item.name == "Aged Brie":
                 self.update_aged_brie(item)
             elif item.name == "Sulfuras, Hand of Ragnaros":
-                self.update_sulfuras(item)
+                continue    # since sulfuras does not decrease in quality and there's no limitation for sell_in 
             elif item.name == "Backstage passes to a TAFKAL80ETC concert":
                 self.update_backstage(item)
             elif item.name == "Conjured Mana Cake":
