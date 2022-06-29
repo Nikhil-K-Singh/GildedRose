@@ -42,7 +42,7 @@ class GildedRoseTest(unittest.TestCase):
         items = [
             Item(name="Aged Brie", sell_in=3, quality=0),
             Item(name="Aged Brie", sell_in=6, quality=48),
-            Item(name="Aged Brie", sell_in=-1, quality=46),
+            Item(name="Aged Brie", sell_in=-1, quality=47),
         ]
 
         gilded_rose = GildedRose(items)
@@ -53,7 +53,7 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(5, gilded_rose.items[1].sell_in)
         self.assertEqual(49, gilded_rose.items[1].quality)
         self.assertEqual(-2, gilded_rose.items[2].sell_in)
-        self.assertEqual(47, gilded_rose.items[2].quality)
+        self.assertEqual(49, gilded_rose.items[2].quality)
 
         gilded_rose.update_quality()  # Day 2
         self.assertEqual(1, gilded_rose.items[0].sell_in)
@@ -61,7 +61,7 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(4, gilded_rose.items[1].sell_in)
         self.assertEqual(50, gilded_rose.items[1].quality)
         self.assertEqual(-3, gilded_rose.items[2].sell_in)
-        self.assertEqual(48, gilded_rose.items[2].quality)
+        self.assertEqual(50, gilded_rose.items[2].quality)
 
         gilded_rose.update_quality()  # Day 3
         self.assertEqual(0, gilded_rose.items[0].sell_in)
@@ -69,11 +69,11 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(3, gilded_rose.items[1].sell_in)
         self.assertEqual(50, gilded_rose.items[1].quality)
         self.assertEqual(-4, gilded_rose.items[2].sell_in)
-        self.assertEqual(49, gilded_rose.items[2].quality)
+        self.assertEqual(50, gilded_rose.items[2].quality)
 
         gilded_rose.update_quality()  # Day 4
         self.assertEqual(-1, gilded_rose.items[0].sell_in)
-        self.assertEqual(4, gilded_rose.items[0].quality)
+        self.assertEqual(5, gilded_rose.items[0].quality)
         self.assertEqual(2, gilded_rose.items[1].sell_in)
         self.assertEqual(50, gilded_rose.items[1].quality)
         self.assertEqual(-5, gilded_rose.items[2].sell_in)

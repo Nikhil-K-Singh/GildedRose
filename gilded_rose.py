@@ -16,9 +16,14 @@ class GildedRose(object):
         item.sell_in -= 1   # sell_in time decreases regardless
         
     def update_aged_brie(self,item):
-        if item.quality < self.q_max:   # "Aged Brie" actually increases in Quality the older it gets but The Quality of an item is never more than 50
+        if item.quality < self.q_max:   # "Aged Brie" actually increases in Quality the older it gets
             item.quality+=1
+            if item.sell_in <=0:
+                item.quality += 1
         item.sell_in -= 1   # sell_in time decreases regardless
+        if item.quality > self.q_max:   #   The Quality of an item is never more than 50
+            item.quality = self.q_max
+        
 
     def update_backstage(self,item):
         if 10 >= item.sell_in > 5:  #   Quality increases by 2 when there are 10 days or less      
