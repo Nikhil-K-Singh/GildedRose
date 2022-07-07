@@ -10,11 +10,11 @@ class GildedRoseTest(unittest.TestCase):
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
         self.assertEqual("foo", items[0].name)
-    
+
     def test_default(self):
         items = [
             Item(name="+5 Dexterity Vest", sell_in=7, quality=16),
-            Item(name="Elixir of the Mongoose", sell_in=5, quality=6)
+            Item(name="Elixir of the Mongoose", sell_in=5, quality=6),
         ]
 
         gilded_rose = GildedRose(items)
@@ -84,7 +84,7 @@ class GildedRoseTest(unittest.TestCase):
         items = [
             Item(name="Sulfuras, Hand of Ragnaros", sell_in=0, quality=80),
             Item(name="Sulfuras, Hand of Ragnaros", sell_in=-1, quality=80),
-            Item(name="Sulfuras, Hand of Ragnaros", sell_in=2, quality=80)
+            Item(name="Sulfuras, Hand of Ragnaros", sell_in=2, quality=80),
         ]
 
         gilded_rose = GildedRose(items)
@@ -108,14 +108,18 @@ class GildedRoseTest(unittest.TestCase):
     # Backstage passes
     def test_backstage_passes(self):
         items = [
-            Item(name="Backstage passes to a TAFKAL80ETC concert",
-                 sell_in=15, quality=20),
-            Item(name="Backstage passes to a TAFKAL80ETC concert",
-                 sell_in=10, quality=49),
-            Item(name="Backstage passes to a TAFKAL80ETC concert",
-                 sell_in=6, quality=42),
-            Item(name="Backstage passes to a TAFKAL80ETC concert",
-                 sell_in=2, quality=32),
+            Item(
+                name="Backstage passes to a TAFKAL80ETC concert", sell_in=15, quality=20
+            ),
+            Item(
+                name="Backstage passes to a TAFKAL80ETC concert", sell_in=10, quality=49
+            ),
+            Item(
+                name="Backstage passes to a TAFKAL80ETC concert", sell_in=6, quality=42
+            ),
+            Item(
+                name="Backstage passes to a TAFKAL80ETC concert", sell_in=2, quality=32
+            ),
         ]
 
         gilded_rose = GildedRose(items)
@@ -162,9 +166,10 @@ class GildedRoseTest(unittest.TestCase):
 
     # Conjured Mana Cake
     def test_conjured(self):
-        items = [Item(name="Conjured Mana Cake", sell_in=3, quality=5),
-                 Item(name="Conjured Mana Cake", sell_in=1, quality=32)
-                 ]
+        items = [
+            Item(name="Conjured Mana Cake", sell_in=3, quality=5),
+            Item(name="Conjured Mana Cake", sell_in=1, quality=32),
+        ]
 
         gilded_rose = GildedRose(items)
 
@@ -192,5 +197,6 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(-3, gilded_rose.items[1].sell_in)
         self.assertEqual(18, gilded_rose.items[1].quality)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()
